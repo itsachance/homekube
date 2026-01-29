@@ -4474,7 +4474,6 @@ spec:
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/version: v2.7.5
     spec:
-    - args
       containers:
       - args:
         - --events-addr=http://notification-controller.$(RUNTIME_NAMESPACE).svc.cluster.local./
