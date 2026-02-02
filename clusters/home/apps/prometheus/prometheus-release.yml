@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  values:
+    server:
+      service:
+        type: ClusterIP
+        port: 9090
+      persistence:
+        enabled: true
+        storageClass: null
+        size: 15Gi
+      retention: 15d
+  interval: 30m
+  chart:
+    spec:
+      chart: prometheus
+      version: '*'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-repo
+        namespace: flux-system
+  install:
+    createNamespace: true
