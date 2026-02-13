@@ -5,5 +5,5 @@ resources:
 - 03-app.yml
 - 04-ingress.yml
 - miniflux-app-secret.yml
-- miniflux-db-secret.yml
+- miniflux-db-superuser-secret.yml
 - miniflux-cnpg-cluster.yml
