@@ -1,5 +1,4 @@
 ---
-# Miniflux Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,7 +23,7 @@ spec:
         - sh
         - -c
         - |
-          until pg_isready -h miniflux-db -U miniflux; do
+          until pg_isready -h miniflux-db-rw -U miniflux; do
             echo "Waiting for database..."
             sleep 2
           done
@@ -32,8 +31,8 @@ spec:
         - name: PGPASSWORD
           valueFrom:
             secretKeyRef:
-              name: miniflux-secrets
-              key: db-password
+              name: miniflux-db-superuser
+              key: password
       containers:
       - name: miniflux
         image: miniflux/miniflux:2.2.15
@@ -44,15 +43,15 @@ spec:
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: miniflux-secrets
-              key: db-user
+              name: miniflux-db-superuser
+              key: username
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: miniflux-secrets
-              key: db-password
+              name: miniflux-db-superuser
+              key: password
         - name: DATABASE_URL
-          value: "postgres://$(DB_USER):$(DB_PASSWORD)@miniflux-db/miniflux?sslmode=disable"
+          value: "postgres://$(DB_USER):$(DB_PASSWORD)@miniflux-db-rw/miniflux?sslmode=disable"
         - name: RUN_MIGRATIONS
           value: "1"
         - name: CREATE_ADMIN
@@ -60,12 +59,12 @@ spec:
         - name: ADMIN_USERNAME
           valueFrom:
             secretKeyRef:
-              name: miniflux-secrets
+              name: miniflux-app-credentials
               key: admin-username
         - name: ADMIN_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: miniflux-secrets
+              name: miniflux-app-credentials
               key: admin-password
         - name: POLLING_FREQUENCY
           value: "20"
@@ -107,7 +106,6 @@ spec:
               topologyKey: kubernetes.io/hostname
 
 ---
-# Miniflux Service
 apiVersion: v1
 kind: Service
 metadata:
