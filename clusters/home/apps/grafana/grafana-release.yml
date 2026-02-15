@@ -5,8 +5,10 @@ metadata:
   namespace: monitoring
 spec:
   values:
-    adminUser: "admin"
-    adminPassword: "test123"
+    admin:
+      existingSecret: grafana-secrets
+      userKey: admin-user
+      passwordKey: admin-password
     service:
       type: ClusterIP
       port: 3000
