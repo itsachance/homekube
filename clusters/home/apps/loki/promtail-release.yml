@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: promtail
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: promtail
+      version: '*'
+      sourceRef:
+        kind: HelmRepository
+        name: loki-repo
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    config:
+      clients:
+        - url: http://loki:3100/loki/api/v1/push
