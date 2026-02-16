@@ -1,0 +1,83 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authelia-config
+  namespace: authelia
+  labels:
+    app: authelia
+data:
+  configuration.yml: |
+    # Authelia Configuration
+    # https://www.authelia.com/configuration/
+
+    theme: auto
+
+    server:
+      address: 'tcp://:9091'
+      buffers:
+        read: 4096
+        write: 4096
+
+    log:
+      level: info
+      format: text
+
+    telemetry:
+      metrics:
+        enabled: false
+
+    totp:
+      disable: true  # Disable 2FA for now - set to false when ready to enable
+
+    webauthn:
+      disable: true  # Disable WebAuthn for now
+
+    authentication_backend:
+      password_reset:
+        disable: true  # Disable password reset via notification for now
+      file:
+        path: /config/users_database.yml
+        password:
+          algorithm: argon2id
+          iterations: 3
+          memory: 65536
+          parallelism: 4
+          key_length: 32
+          salt_length: 16
+
+    access_control:
+      default_policy: deny
+      rules:
+        # Allow all authenticated users to access any subdomain
+        - domain: '*.bytechance.dev'
+          policy: one_factor
+
+    session:
+      name: authelia_session
+      same_site: lax
+      inactivity: 5m
+      expiration: 1h
+      remember_me: 1M
+      cookies:
+        - domain: 'bytechance.dev'
+          authelia_url: 'https://auth.bytechance.dev'
+          default_redirection_url: 'https://bytechance.dev'
+      redis:
+        host: valkey
+        port: 6379
+        # Password is injected via environment variable
+
+    regulation:
+      max_retries: 3
+      find_time: 2m
+      ban_time: 5m
+
+    storage:
+      local:
+        path: /data/db.sqlite3
+
+    notifier:
+      # Using filesystem notifier - password reset links written to file
+      filesystem:
+        filename: /data/notification.txt

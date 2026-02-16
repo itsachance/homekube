@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - 00-namespace.yml
+  - valkey.yml
+  - authelia-secrets.yml
+  - authelia-users.yml
+  - authelia-config.yml
+  - authelia.yml
+  - ingress.yml
+  - middleware.yml
