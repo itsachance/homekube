@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - longhorn-ingress.yml
 - longhorn-iscsi-selinux-workaround.yaml
+- longhorn-settings.yml
