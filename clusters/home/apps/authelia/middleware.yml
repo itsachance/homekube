@@ -14,7 +14,8 @@ metadata:
     app: authelia
 spec:
   forwardAuth:
-    address: http://authelia.authelia.svc.cluster.local:9091/api/authz/forward-auth
+    address: http://authelia-svc.authelia.svc.cluster.local:9091/api/authz/forward-auth
+
     trustForwardHeader: true
     authResponseHeaders:
       - Remote-User
