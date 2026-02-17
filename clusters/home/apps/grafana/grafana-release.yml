@@ -12,10 +12,20 @@ spec:
     service:
       type: ClusterIP
       port: 3000
-    persistence: 
+    persistence:
       enabled: true
       type: pvc
       size: 4Gi
+    grafana.ini:
+      users:
+        auto_assign_org_role: Admin
+      auth.proxy:
+        enabled: true
+        header_name: Remote-User
+        header_property: username
+        auto_sign_up: true
+        headers: "Name:Remote-Name Email:Remote-Email Groups:Remote-Groups"
+        enable_login_token: false
   interval: 30m
   chart:
     spec:
