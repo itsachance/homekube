@@ -8,6 +8,7 @@ metadata:
 spec:
   forwardAuth:
     address: http://authelia-svc.authelia.svc.cluster.local:9091/api/authz/forward-auth
+    trustForwardHeader: true
     authRequestHeaders:
       - X-Forwarded-Method
       - X-Forwarded-Proto
