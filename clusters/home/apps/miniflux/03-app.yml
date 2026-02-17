@@ -72,6 +72,12 @@ spec:
           value: "1"
         - name: DISABLE_HTTP2
           value: "1"
+        - name: AUTH_PROXY_HEADER
+          value: "Remote-User"
+        - name: AUTH_PROXY_USER_CREATION
+          value: "1"
+        - name: TRUSTED_REVERSE_PROXY_NETWORKS
+          value: "10.42.0.0/16,10.43.0.0/16"
         livenessProbe:
           httpGet:
             path: /healthcheck
