@@ -6,3 +6,4 @@ resources:
   - filebrowser-db-pvc.yml
   - filebrowser-ingress.yml
   - filebrowser-app.yml
+  - filebrowser-configMap.yml
