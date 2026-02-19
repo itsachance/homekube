@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: kiwix
-          image: ghcr.io/kiwix/kiwix-tools:3.8.1
+          image: ghcr.io/kiwix/kiwix-serve:3.8.1
+
           command: ["bin/sh", "-c"]
           args:
             - |
