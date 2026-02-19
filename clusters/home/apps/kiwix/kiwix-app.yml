@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kiwix
+  labals:
+    app: kiwix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kiwix
+  template:
+    metadata:
+      labels:
+        app: kiwix
+    spec:
+      containers:
+        - name: kiwix
+          image: ghcr.io/kiwix/kiwix-tools:3.8.1
+          command: ["bin/sh", "-c"]
+          args:
+            - |
+              echo "Scanning for ZIM files..."
+              rm -f /data/library.xml
+              kiwix-manage /data/library.xml add /data/*.zim
+              kiwix-manage /data/library.xml --port 8080
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: zim-files
+              mountPath: /data
+      volumes:
+        - name: zim-files
+          persistentVolumeClaim:
+            claimName: kiwix-data-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kiwix-service
+spec:
+  selector:
+    app: kiwix
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
