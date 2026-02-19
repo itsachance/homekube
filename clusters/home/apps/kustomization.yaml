@@ -8,3 +8,4 @@ resources:
   - loki/
   - authelia/
   - kiwix/
+  - filebrowser/
