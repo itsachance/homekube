@@ -24,7 +24,7 @@ spec:
           service:
             name: filebrowser-service
             port:
-              number: 8080
+              number: 80
   tls:
   - hosts:
     - files.bytechance.dev
