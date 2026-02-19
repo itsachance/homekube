@@ -7,6 +7,8 @@ metadata:
     app: filebrowser
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: filebrowser
