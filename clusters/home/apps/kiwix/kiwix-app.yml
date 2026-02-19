@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kiwix
-  labals:
+  namespace: kiwix
+  labels:
     app: kiwix
 spec:
   replicas: 1
@@ -17,14 +18,8 @@ spec:
       containers:
         - name: kiwix
           image: ghcr.io/kiwix/kiwix-serve:3.8.1
-
-          command: ["bin/sh", "-c"]
           args:
-            - |
-              echo "Scanning for ZIM files..."
-              rm -f /data/library.xml
-              kiwix-manage /data/library.xml add /data/*.zim
-              kiwix-manage /data/library.xml --port 8080
+            - "*.zim"
           ports:
             - containerPort: 8080
           volumeMounts:
@@ -40,6 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kiwix-service
+  namespace: kiwix
 spec:
   selector:
     app: kiwix
