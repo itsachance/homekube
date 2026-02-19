@@ -7,3 +7,4 @@ resources:
   - filebrowser-ingress.yml
   - filebrowser-app.yml
   - filebrowser-configMap.yml
+  - filebrowser-secrets.yml
