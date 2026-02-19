@@ -28,10 +28,13 @@ spec:
             - name: PGID
               value: "1000"
             - name: FB_USERNAME
-              valuesFrom:
+              valueFrom:
                 secretKeyRef:
                   name: filebrowser-secrets
                   key: FB_USERNAME
+          args:
+            - --username
+            - "$(FB_USERNAME)"
           ports:
             - containerPort: 80
           volumeMounts:
