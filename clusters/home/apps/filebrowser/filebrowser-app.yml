@@ -19,6 +19,18 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
+      initContainers:
+        - name: configure-auth
+          image: filebrowser/filebrowser:v2.59.0
+          command:
+            - sh
+            - -c
+            - |
+              filebrowser config init -d /database/filebrowser.db 2>/dev/null || true
+              filebrowser config set -d /database/filebrowser.db --auth.method=proxy --auth.header=Remote-User
+          volumeMounts:
+            - name: database-vol
+              mountPath: /database
       containers:
         - name: filebrowser
           image: filebrowser/filebrowser:v2.59.0
