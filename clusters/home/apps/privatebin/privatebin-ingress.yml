@@ -24,7 +24,7 @@ spec:
           service:
             name: privatebin
             port:
-              number: 9090
+              number: 80
   tls:
   - hosts:
     - paste.bytechance.dev
