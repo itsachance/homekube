@@ -16,6 +16,10 @@ spec:
   install:
     createNamespace: true
   values:
+    chunksCache:
+      enabled: false
+    resultsCache:
+      enabled: false
     deploymentMode: SingleBinary
     singleBinary:
       replicas: 1
