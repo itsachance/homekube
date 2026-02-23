@@ -14,12 +14,12 @@ spec:
               instance: "boromir"
               os: "almalinux"
       - job_name: pfsense
-          static_configs:
-            - targets:
-                - "192.168.200.1:9273"
-              labels:
-                instance: "pfsense"
-                os: "freebsd"
+        static_configs:
+          - targets:
+              - "192.168.200.1:9273"
+            labels:
+              instance: "pfsense"
+              os: "freebsd"
     server:
       service:
         type: ClusterIP
