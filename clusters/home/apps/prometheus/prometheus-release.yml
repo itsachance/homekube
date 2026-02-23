@@ -5,6 +5,14 @@ metadata:
   namespace: monitoring
 spec:
   values:
+    extraScrapeConfigs: |
+      - job_name: linux-servers
+        static_configs:
+          - targets:
+              - "192.168.200.4:9100"
+            labels:
+              instance: "boromir"
+              os: "almalinux"
     server:
       service:
         type: ClusterIP
