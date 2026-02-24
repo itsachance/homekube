@@ -20,6 +20,13 @@ spec:
             labels:
               instance: "pfsense"
               os: "freebsd"
+      - job_name: truenas
+        static_configs:
+          - targets:
+              - "graphite-exporter.monitoring.svc:9108"
+            labels:
+              instance: "truenas"
+              os: "debian"
     server:
       service:
         type: ClusterIP

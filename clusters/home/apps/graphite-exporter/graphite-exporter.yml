@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphite-exporter
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graphite-exporter
+  template:
+    metadata:
+      labels:
+        app: graphite-exporter
+    spec:
+      containers:
+      - name: graphite-exporter
+        image: prom/graphite-exporter:v0.15.0
+        args:
+          - "--graphite.mapping-config=/etc/graphite-exporter/graphite_mapping.yml"
+        ports:
+          - name: scrape
+            containerPort: 9108
+          - name: graphite-tcp
+            containerPort: 9109
+          - name: graphite-udp
+            containerPort: 9109
+            protocol: UDP
+        volumeMounts:
+          - name: config
+            mountPath: /etc/graphite-exporter
+      volumes:
+        - name: config
+          configMap:
+            name: graphite-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphite-exporter
+  namespace: monitoring
+spec:
+  type: LoadBalancer
+  ports:
+    - name: metrics
+      port: 9108
+      targetPort: 9108
+    - name: graphite-tcp
+      port: 2003
+      targetPort: 9109
+    - name: graphite-udp
+      port: 2003
+      targetPort: 9109
+      protocol: UDP
+  selector:
+    app: graphite-exporter

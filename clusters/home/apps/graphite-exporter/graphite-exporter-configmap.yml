@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: graphite-configmap
+  namespace: monitoring
+data:
+  graphite_mapping.yml: |-
+    mappings:
+      - match: 'truenas.truenas.*.*.*.*'
+        name: 'truenas_metric'
+        labels:
+          hostname: "$1"
+          subsystem: "$2"
+          metric_type: "$3"
+          component: "$4"

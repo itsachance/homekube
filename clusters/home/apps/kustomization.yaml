@@ -10,3 +10,4 @@ resources:
   - kiwix/
   - filebrowser/
   - privatebin/
+  - graphite-exporter/
