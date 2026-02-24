@@ -7,5 +7,5 @@ metadata:
 data:
   config.json: |-
     {
-      "repositories": ["ItsAchance/homekube"]
+      "repositories": ["ItsAchance/homekube", "ItsAchance/homelab", "ItsAchance/home-docker-compose"]
     }
