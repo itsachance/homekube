@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plik
+  namespace: plik
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plik
+  template:
+    metadata:
+      labels:
+        app: plik
+    spec:
+      containers:
+        - name: plik
+          image: plik/plik:1.3.8
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PLIKD_LISTEN_PORT
+              value: "8080"
+            - name: PLIKD_DOWNLOAD_DOMAIN
+              value: "https://send.bytechance.dev"
+            - name: PLIKD_DATA_BACKEND
+              value: "file"
+            - name: PLIKD_DATA_BACKEND_CONFIG
+              value: '{"Directory":"/data/files"}'
+            - name: PLIKD_METADATA_BACKEND_CONFIG
+              value: '{"Driver":"sqlite3","ConnectionString":"/data/plik.db"}'
+            - name: PLIKD_MAX_FILE_SIZE_STR
+              value: "50GiB"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: plik-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plik
+  namespace: plik
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: plik
