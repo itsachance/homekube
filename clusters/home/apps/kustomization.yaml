@@ -12,3 +12,4 @@ resources:
   - privatebin/
   - graphite-exporter/
   - plik/
+  - external-services/
