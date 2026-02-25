@@ -9,3 +9,4 @@ resources:
   - proxmox-svc.yml
   - truenas-ingress.yml
   - truenas-svc.yml
+  - proxmox-middleware.yml

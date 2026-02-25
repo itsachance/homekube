@@ -1,0 +1,9 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: proxmox-headers
+  namespace: external-services
+spec:
+  headers:
+    customRequestHeaders:
+      Host: "192.168.200.2:8006"
