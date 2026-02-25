@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: container-apps
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: ssh://git@github.com/ItsAchance/container-apps
+  ref:
+    branch: main
+  secretRef:
+    name: flux-system
