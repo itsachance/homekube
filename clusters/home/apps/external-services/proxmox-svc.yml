@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: proxmox
   namespace: external-services
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+    traefik.ingress.kubernetes.io/service.serverstransport: external-services-insecure-transport@kubernetescrd
 spec:
   ports:
     - port: 8006

@@ -8,8 +8,6 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/redirect-entry-point: https
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: external-services-insecure-transport@kubernetescrd
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
