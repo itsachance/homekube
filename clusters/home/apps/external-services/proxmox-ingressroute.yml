@@ -12,9 +12,9 @@ spec:
       services:
         - name: proxmox
           port: 8006
-          serversTransport: external-services-insecure-transport
+          serversTransport: insecure-transport@kubernetescrd
       middlewares:
         - name: proxmox-headers
           namespace: external-services
   tls:
-    certResolver: le
+    secretName: proxmox-tls
