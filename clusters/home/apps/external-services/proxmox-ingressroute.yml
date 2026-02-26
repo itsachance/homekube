@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: proxmox-ingressroute
+  namespace: external-services
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`proxmox.bytechance.dev`)
+      kind: Rule
+      services:
+        - name: proxmox
+          port: 8006
+          serversTransport: external-services-insecure-transport
+      middlewares:
+        - name: proxmox-headers
+          namespace: external-services
+  tls:
+    certResolver: le
