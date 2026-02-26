@@ -14,8 +14,5 @@ spec:
           port: 8006
           serversTransport: insecure-transport
           passHostHeader: true
-      middlewares:
-        - name: proxmox-headers
-          namespace: external-services
   tls:
     secretName: proxmox-tls
