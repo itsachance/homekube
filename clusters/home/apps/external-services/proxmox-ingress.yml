@@ -11,7 +11,6 @@ metadata:
     traefik.ingress.kubernetes.io/service.serversscheme: https
     traefik.ingress.kubernetes.io/service.serverstransport: external-services-insecure-transport@kubernetescrd
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    traefik.ingress.kubernetes.io/router.middlewares: external-services-proxmox-headers@kubernetescrd
 spec:
   rules:
     - host: proxmox.bytechance.dev

@@ -4,9 +4,8 @@ resources:
   - 00namespace.yml
   - homeassistant-ingress.yml
   - homeassistant-svc.yml
-  - proxmox-ingressroute.yml
+  - proxmox-ingress.yml
   - proxmox-serverstransport.yml
   - proxmox-svc.yml
   - truenas-ingress.yml
   - truenas-svc.yml
-  - proxmox-middleware.yml
