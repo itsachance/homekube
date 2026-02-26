@@ -6,4 +6,4 @@ metadata:
 spec:
   headers:
     customRequestHeaders:
-      Host: "192.168.200.2:8006"
+      X-Forwarded-Proto: "https"
