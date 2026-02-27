@@ -4,5 +4,5 @@ resources:
   - 00namepace.yml
   - metallb-helm-release.yml
   - metallb-helm-repo.yml
-  - metallb-ipaddresspool.yml
-  - metallb-l2advertisement.yml
+#  - metallb-ipaddresspool.yml
+#  - metallb-l2advertisement.yml
