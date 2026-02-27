@@ -7,3 +7,4 @@ resources:
 - cnpg/
 - renovate/
 - container-apps/
+- metallb/
