@@ -8,3 +8,4 @@ resources:
 - renovate/
 - container-apps/
 - metallb/
+- traefik/
