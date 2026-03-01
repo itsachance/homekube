@@ -41,6 +41,10 @@ metadata:
   namespace: monitoring
 spec:
   type: LoadBalancer
+  annotations:
+    metallb.universe.tf/address-pool: metallb-pool
+    metallb.universe.tf/loadBalancerIPs: 192.168.200.202
+
   ports:
     - name: metrics
       port: 9108
