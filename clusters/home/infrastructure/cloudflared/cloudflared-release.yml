@@ -23,5 +23,4 @@ spec:
       ingress:
         - hostname: traefik.bytechance.dev
           service: https://traefik:443
-        - service: http_status:404
   targetNamespace: cloudflared
