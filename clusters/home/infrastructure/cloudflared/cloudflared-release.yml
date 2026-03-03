@@ -18,14 +18,10 @@ spec:
   values:
     replicaCount: 1
     cloudflare:
+      tunnelName: homekube
       secretName: cloudflared-secrets
       ingress:
         - hostname: traefik.bytechance.dev
           service: https://traefik:443
         - service: http_status:404
-  valuesFrom:
-    - kind: Secret
-      name: cloudflared-secrets
-      valuesKey: tunnelName
-      targetPath: cloudflare.tunnelName
   targetNamespace: cloudflared
