@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - loki-repo.yml
   - loki-release.yml
-  - promtail-release.yml
+  - alloy-release.yml
