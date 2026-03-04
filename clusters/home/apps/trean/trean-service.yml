@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 3an-postgre-db
+  name: trean-postgre-db
   namespace: trean
   labels:
     app: trean
