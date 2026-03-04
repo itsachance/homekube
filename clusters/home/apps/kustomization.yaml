@@ -13,3 +13,4 @@ resources:
   - graphite-exporter/
   - plik/
   - external-services/
+  - trean/
