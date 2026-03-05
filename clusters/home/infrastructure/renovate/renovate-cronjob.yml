@@ -5,7 +5,7 @@ metadata:
   name: renovate-bot
   namespace: renovate
 spec:
-  schedule: '@hourly'
+  schedule: '@weekly'
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
