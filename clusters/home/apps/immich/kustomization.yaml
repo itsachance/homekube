@@ -5,7 +5,7 @@ resources:
   - immich-repo.yml
   - immich-db-secret.yml
   - immich-cnpg-cluster.yml
-#  - immich-pv.yml
-#  - immich-pvc.yml
-#  - immich-release.yml
-#  - immich-ingress.yml
+  - immich-pv.yml
+  - immich-pvc.yml
+  - immich-release.yml
+  - immich-ingress.yml
