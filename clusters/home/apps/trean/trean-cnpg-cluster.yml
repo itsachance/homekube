@@ -25,3 +25,7 @@ spec:
       owner: postgre
       secret:
         name: trean-db-superuser
+      postInitApplicationSQL:
+        - "CREATE USER postgre WITH PASSWORD 'postgre';"
+        - "ALTER DATABASE trean OWNER TO postgre;"
+        - "GRANT ALL PRIVILEGES ON DATABASE trean TO postgre;"
