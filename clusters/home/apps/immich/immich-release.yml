@@ -1,0 +1,53 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: immich
+      version: '0.10.3'
+      sourceRef:
+        kind: HelmRepository
+        name: immich-repo
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              tag: v2.5.6
+            env:
+              DB_HOSTNAME: immich-db-rw
+              DB_DATABASE_NAME: immich
+              DB_PORT: "5432"
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-db-secret
+                    key: username
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-db-secret
+                    key: password
+    immich:
+      persistence:
+        library:
+          existingClaim: immich-photos-pvc
+    machine-learning:
+      enabled: false
+    valkey:
+      enabled: true
+      persistence:
+        data:
+          enabled: true
+          type: persistentVolumeClaim
+          size: 1Gi
+          accessMode: ReadWriteOnce
+          storageClass: longhorn

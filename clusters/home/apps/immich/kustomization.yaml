@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - 00namespace.yml
+  - immich-repo.yml
+  - immich-db-secret.yml
+  - immich-cnpg-cluster.yml
+#  - immich-pv.yml
+#  - immich-pvc.yml
+#  - immich-release.yml
+#  - immich-ingress.yml
