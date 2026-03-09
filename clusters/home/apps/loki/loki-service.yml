@@ -13,4 +13,4 @@ spec:
       port: 3100
       targetPort: 3100
   selector:
-    app: loki
+    app.kubernetes.io/name: loki
