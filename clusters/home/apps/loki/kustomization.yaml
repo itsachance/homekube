@@ -4,3 +4,4 @@ resources:
   - loki-repo.yml
   - loki-release.yml
   - alloy-release.yml
+  - loki-service.yml
