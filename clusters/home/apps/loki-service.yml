@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loki-service
+  namespace: monitoring
+  annotations:
+    metallb.universe.tf/address-pool: metallb-pool
+    metallb.universe.tf/loadBalancerIPs: 192.168.200.202
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http-metrics
+      port: 3100
+      targetPort: 3100
+  selector:
+    app: loki
