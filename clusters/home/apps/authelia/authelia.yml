@@ -49,7 +49,7 @@ spec:
                   key: VALKEY_PASSWORD
       containers:
         - name: authelia
-          image: authelia/authelia:4.38
+          image: authelia/authelia:4.39
           ports:
             - containerPort: 9091
               name: http
