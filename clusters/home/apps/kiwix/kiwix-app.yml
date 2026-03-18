@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: kiwix
-          image: ghcr.io/kiwix/kiwix-serve:3.8.1
+          image: ghcr.io/kiwix/kiwix-serve:3.8.2
           args:
             - "*.zim"
           ports:
