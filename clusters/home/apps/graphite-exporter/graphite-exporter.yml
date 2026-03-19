@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: graphite-exporter
-        image: prom/graphite-exporter:v0.15.0
+        image: prom/graphite-exporter:v0.16.0
         args:
           - "--graphite.mapping-config=/etc/graphite-exporter/graphite_mapping.yml"
         ports:
