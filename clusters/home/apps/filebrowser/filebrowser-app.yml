@@ -21,7 +21,7 @@ spec:
         fsGroup: 1000
       initContainers:
         - name: configure-auth
-          image: filebrowser/filebrowser:v2.62.1
+          image: filebrowser/filebrowser:v2.62.2
           command:
             - sh
             - -c
@@ -33,7 +33,7 @@ spec:
               mountPath: /database
       containers:
         - name: filebrowser
-          image: filebrowser/filebrowser:v2.62.1
+          image: filebrowser/filebrowser:v2.62.2
           env:
             - name: PUID
               value: "1000"
