@@ -28,7 +28,7 @@ data:
         enabled: false
 
     totp:
-      disable: true  # Disable 2FA for now - set to false when ready to enable
+      disable: false
 
     webauthn:
       disable: false
@@ -57,7 +57,7 @@ data:
       rules:
         # Allow all authenticated users to access any subdomain
         - domain: '*.bytechance.dev'
-          policy: one_factor
+          policy: two_factor
 
     session:
       name: authelia_session
