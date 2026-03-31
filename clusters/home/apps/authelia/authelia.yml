@@ -24,6 +24,7 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+    rollingUpdate: null
   selector:
     matchLabels:
       app: authelia
@@ -55,9 +56,11 @@ spec:
           ports:
             - containerPort: 9091
               name: http
-          args: 
-            - --config=/config/configuration.yml
-            - --config.experimental.filters=template
+          command:
+            - 'authelia'
+          args:
+            - '--config=/config/configuration.yml'
+            - '--config.experimental.filters=template'
           env:
             - name: AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET_FILE
               value: /secrets/JWT_SECRET
