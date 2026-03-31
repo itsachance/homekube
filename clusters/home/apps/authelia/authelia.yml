@@ -53,6 +53,9 @@ spec:
           ports:
             - containerPort: 9091
               name: http
+          args: 
+            - --config=/config/configuration.yml
+            - --config.experimental.filters=template
           env:
             - name: AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET_FILE
               value: /secrets/JWT_SECRET
@@ -62,6 +65,8 @@ spec:
               value: /secrets/STORAGE_ENCRYPTION_KEY
             - name: AUTHELIA_SESSION_REDIS_PASSWORD_FILE
               value: /secrets/VALKEY_PASSWORD
+            - name: AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE
+              value: /secrets/OIDC_HMAC_SECRET
             - name: TZ
               value: "Europe/Stockholm"
           volumeMounts:

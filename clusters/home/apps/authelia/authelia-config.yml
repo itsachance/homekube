@@ -87,3 +87,45 @@ data:
       # Using filesystem notifier - password reset links written to file
       filesystem:
         filename: /data/notification.txt
+
+    identity_providers:
+      oidc:
+        jwks:
+        - key_id: 'main'
+          algorithm: 'RS256'
+          use: 'sig'
+          key: {{ secret "/secrets/OIDC_JWKS_RS256_KEY" | mindent 10 "|" | msquote }}
+        cors:
+          endpoints:
+            - 'authorization'
+            - 'token'
+            - 'revocation'
+            - 'introspection'
+            - 'userinfo'
+          allowed_origins_from_client_redirect_uris: true
+        clients:
+          - client_id: 'immich'
+            client_name: 'immich'
+            client_secret: '$pbkdf2-sha512$310000$kKAu434LkM0s.4.hBFEtYA$poIXm4Itwu6DQ8bF4wVPb25nEmfr9hB4M90xp7MBgDQkDC5jF9FwWp/N3JGXxCVQl/PlcxFh7h/tL4ECSzTNsA'
+            public: false
+            authorization_policy: 'two_factor'
+            require_pkce: false
+            redirect_uris:
+              - 'https://immich.bytechance.dev/auth/login'
+              - 'https://immich.bytechance.dev/user-settings'
+              - 'app.immich:///oauth-callback'
+            scopes:
+              - 'openid'
+              - 'profile'
+              - 'email'
+            response_types:
+              - 'code'
+            grant_types:
+              - 'authorization_code'
+            access_token_signed_response_alg: 'none'
+            userinfo_signed_response_alg: 'none'
+            token_endpoint_auth_method: 'client_secret_post'
+
+
+
+
