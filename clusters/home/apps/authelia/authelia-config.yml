@@ -35,9 +35,9 @@ data:
       display_name: 'Authelia'
       timeout: '60 seconds'
       selection_criteria:
-      attachment: ''
-      discoverability: 'preferred'
-      user_verification: 'preferred'
+        attachment: ''
+        discoverability: 'preferred'
+        user_verification: 'preferred'
 
     authentication_backend:
       password_reset:
