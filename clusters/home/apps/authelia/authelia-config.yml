@@ -142,3 +142,24 @@ data:
             access_token_signed_response_alg: 'none'
             userinfo_signed_response_alg: 'none'
             token_endpoint_auth_method: 'client_secret_post'
+
+          - client_id: 'miniflux'
+            client_name: 'miniflux'
+            client_secret: '$pbkdf2-sha512$310000$Gb6YE69tKQayDL74m/Qbag$jHKJcxhpku9fzvJNmiF.wDkxxrCvd19MXXBO51vbziNABcCEt9WSQZ7ELAFqhC8DlvtaL2MZ0Q7II5KC6XzDaA'
+            public: false
+            authorization_policy: 'two_factor'
+            require_pkce: false
+            pkce_challenge_method: ''
+            redirect_uris:
+              - 'https://rss.bytechance.dev/oauth2/oidc/callback'
+            scopes:
+              - 'openid'
+              - 'profile'
+              - 'email'
+            response_types:
+              - 'code'
+            grant_types:
+              - 'authorization_code'
+            access_token_signed_response_alg: 'none'
+            userinfo_signed_response_alg: 'none'
+            token_endpoint_auth_method: 'client_secret_basic'

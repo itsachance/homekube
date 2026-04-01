@@ -72,12 +72,23 @@ spec:
           value: "1"
         - name: DISABLE_HTTP2
           value: "1"
-        - name: AUTH_PROXY_HEADER
-          value: "Remote-User"
-        - name: AUTH_PROXY_USER_CREATION
-          value: "1"
-        - name: TRUSTED_REVERSE_PROXY_NETWORKS
-          value: "10.42.0.0/16,10.43.0.0/16"
+        - name: OAUTH2_PROVIDER
+          value: "oidc"
+        - name: OAUTH2_CLIENT_ID
+          value: "miniflux"
+        - name: OAUTH2_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: miniflux-app-credentials
+              key: OAUTH2_CLIENT_SECRET
+        - name: OAUTH2_REDIRECT_URL
+          value: https://rss.bytechance.dev/oauth2/oidc/callback
+        - name: OAUTH2_OIDC_DISCOVERY_ENDPOINT
+          value: https://auth.bytechance.dev
+        - name: BASE_URL 
+          value: https://rss.bytechance.dev
+        - name: OAUTH2_USER_CREATION 
+          value: "0"
         livenessProbe:
           httpGet:
             path: /healthcheck
