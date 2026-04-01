@@ -88,7 +88,7 @@ spec:
         - name: BASE_URL 
           value: https://rss.bytechance.dev
         - name: OAUTH2_USER_CREATION 
-          value: "0"
+          value: "1"
         livenessProbe:
           httpGet:
             path: /healthcheck
