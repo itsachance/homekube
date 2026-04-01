@@ -22,6 +22,25 @@ spec:
         value: "HTTP_REMOTE_USER"
       - name: LD_AUTH_PROXY_LOGOUT_URL
         value: "https://auth.bytechance.dev/logout"
+      - name: LD_ENABLE_OIDC
+        value: "True"
+      - name: LD_CSRF_TRUSTED_ORIGINS
+        value: "https://auth.bytechance.dev"
+      - name: OIDC_RP_CLIENT_ID
+        value: "linkding"
+      - name: OIDC_RP_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: linkding-secrets
+            key: OIDC_RP_CLIENT_SECRET
+      - name: OIDC_OP_AUTHORIZATION_ENDPOINT
+        value: "https://auth.bytechance.dev/api/oidc/authorization"
+      - name: OIDC_OP_TOKEN_ENDPOINT
+        value: "https://auth.bytechance.dev/api/oidc/token"
+      - name: OIDC_OP_USER_ENDPOINT
+        value: "https://auth.bytechance.dev/api/oidc/userinfo"
+      - name: OIDC_OP_JWKS_ENDPOINT
+        value: "https://auth.bytechance.dev/jwks.json"
     service:
       type: ClusterIP
       port: 80
