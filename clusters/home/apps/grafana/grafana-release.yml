@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   values:
-    strategy:
+    deploymentStrategy:
       type: Recreate
     admin:
       existingSecret: grafana-secrets
@@ -33,12 +33,11 @@ spec:
         token_url: https://auth.bytechance.dev/api/oidc/token
         api_url: https://auth.bytechance.dev/api/oidc/userinfo
         use_pkce: true
-    env:
+    envValueFrom:
       GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
-        valueFrom:
-          secretKeyRef:
-            name: grafana-secrets
-            key: GRAFANA_OAUTH_CLIENT_SECRET
+        secretKeyRef:
+          name: grafana-secrets
+          key: GRAFANA_OAUTH_CLIENT_SECRET
   interval: 30m
   chart:
     spec:
