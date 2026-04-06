@@ -206,3 +206,27 @@ data:
             access_token_signed_response_alg: 'none'
             userinfo_signed_response_alg: 'none'
             token_endpoint_auth_method: 'client_secret_basic'
+
+          - client_id: 'audiobookshelf'
+            client_name: 'audiobookshelf'
+            client_secret: '$pbkdf2-sha512$310000$Lkzi6d0SuF1E.k3pJ9kwIw$aDP1b9ZCDVSTZDzn5cz91CPPAdmzeW.MNGacn4T4idqV8M.V6bEfh43qT5I7ryRjeDfZ42JS7EDhTKd7kRJWiw'
+            public: false
+            authorization_policy: 'two_factor'
+            require_pkce: true
+            pkce_challenge_method: 'S256'
+            redirect_uris:
+              - 'https://audiobook.bytechance.dev/auth/openid/callback'
+              - 'https://audiobook.bytechance.dev/auth/openid/mobile-redirect'
+              - 'audiobook://oauth'
+            scopes:
+              - 'openid'
+              - 'profile'
+              - 'groups'
+              - 'email'
+            response_types:
+              - 'code'
+            grant_types:
+              - 'authorization_code'
+            access_token_signed_response_alg: 'none'
+            userinfo_signed_response_alg: 'none'
+            token_endpoint_auth_method: 'client_secret_basic'

@@ -33,7 +33,7 @@ spec:
       labels:
         app: authelia
       annotations:
-        checksum/config: "dce74b6b4630179952d15798c1d9b73210c9fc01c993d1e2dfa0bebe66149f61"
+        checksum/config: "52718aa07c37d468ad008cdbf1a97e7cf9c1e50ad83fb384dd18637fb26b44cb"
     spec:
       initContainers:
         - name: wait-for-valkey
