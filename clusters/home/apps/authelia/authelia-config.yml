@@ -166,7 +166,7 @@ data:
 
           - client_id: 'grafana'
             client_name: 'grafana'
-            client_secret: '$pbkdf2-sha512$310000$iJeaCMBF45Mxk4MHWsIBLA$7kyyAOWD0TjmekO38yIGZPZ28cSjNwNyPx3EbJY8IWb2NwhkmCPP.5JF2w0IIwzKTYlczLUXIUw3EDlEfZq7yQ'
+            client_secret: '$pbkdf2-sha512$310000$1PO9B7vKQiEYEcMSQARo9A$oRUwSM8Lc73PDPk/fnzOLkwIYWytWONFrquo4vt45Kb8wMtrHRIN0FdVg31GFTclsx0OKDzbW61jLmBOyMbOlA'
             public: false
             authorization_policy: 'two_factor'
             require_pkce: true
@@ -183,4 +183,4 @@ data:
               - 'authorization_code'
             access_token_signed_response_alg: 'none'
             userinfo_signed_response_alg: 'none'
-            token_endpoint_auth_method: 'client_secret_post'
+            token_endpoint_auth_method: 'client_secret_basic'
