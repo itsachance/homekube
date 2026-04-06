@@ -33,6 +33,7 @@ spec:
         token_url: https://auth.bytechance.dev/api/oidc/token
         api_url: https://auth.bytechance.dev/api/oidc/userinfo
         use_pkce: true
+        allow_sign_up: true
     envValueFrom:
       GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
         secretKeyRef:
