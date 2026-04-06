@@ -25,7 +25,7 @@ spec:
         auto_assign_org_role: Admin
       auth.generic_oauth:
         enabled: true
-        name: OAuth
+        name: Authelia
         client_id: grafana
         client_secret: $__env{GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}
         scopes: openid profile email
