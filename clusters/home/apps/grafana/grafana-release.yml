@@ -5,6 +5,8 @@ metadata:
   namespace: monitoring
 spec:
   values:
+    strategy:
+      type: Recreate
     admin:
       existingSecret: grafana-secrets
       userKey: admin-user
