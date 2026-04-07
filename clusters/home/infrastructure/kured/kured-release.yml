@@ -18,4 +18,6 @@ spec:
   values:
     configuration:
       concurrency: 1
+    extraArgs:
+      reboot-sentinel-command: "sh -c '! needs-restarting --reboothint'"
   targetNamespace: kured
