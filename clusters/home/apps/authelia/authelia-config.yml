@@ -240,6 +240,7 @@ data:
             pkce_challenge_method: 'S256'
             redirect_uris:
               - 'https://jellyfin.bytechance.dev/sso/OID/redirect/authelia'
+              - 'http://jellyfin.bytechance.dev/sso/OID/redirect/authelia'
             scopes:
               - 'openid'
               - 'profile'
