@@ -13,6 +13,11 @@ spec:
         kind: HelmRepository
         name: descheduler-repo
         namespace: flux-system
+  values:
+    extraRules:
+      - apiGroups: [""]
+        resources: ["persistentvolumeclaims"]
+        verbs: ["get", "list", "watch"]
   install:
     createNamespace: true
   targetNamespace: descheduler
