@@ -13,6 +13,33 @@ spec:
         kind: HelmRepository
         name: descheduler-repo
         namespace: flux-system
+  values:
+    schedule: "2 */2 * * *"
+    deschedulerPolicy:
+      profiles:
+        - name: default
+          pluginConfig:
+            - name: DefaultEvictor
+              args:
+                podProtections:
+                  defaultDisabled:
+                    - PodsWithLocalStorage
+                  extraEnabled:
+                    - PodsWithPVC
+            - name: LowNodeUtilization
+              args:
+                thresholds:
+                  cpu: 15
+                  memory: 15
+                  pods: 25
+                targetThresholds:
+                  cpu: 40
+                  memory: 40
+                  pods: 40
+          plugins:
+            balance:
+              enabled:
+                - LowNodeUtilization
   install:
     createNamespace: true
   targetNamespace: descheduler
