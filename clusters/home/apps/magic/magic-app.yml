@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: magic
+  namespace: magic
+  labels:
+    app: magic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: magic
+  template:
+    metadata:
+      labels:
+        app: magic
+    spec:
+      containers:
+      - name: magic
+        image: localhost/magic8ball:0.1
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        imagePullPolicy: Never
