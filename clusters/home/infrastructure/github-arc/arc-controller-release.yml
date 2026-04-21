@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: arc-controller
+  namespace: arc-runners
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: .
+      sourceRef:
+        kind: OCIRepository
+        name: arc-controller
+        namespace: flux-system
+  install:
+    createNamespace: false
+  targetNamespace: arc-runners

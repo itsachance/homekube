@@ -11,3 +11,5 @@ resources:
 - traefik/
 - cloudflared/
 - descheduler/
+- github-arc/
+- dev-container/
