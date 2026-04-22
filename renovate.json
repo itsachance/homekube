@@ -1,30 +1,18 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
         "config:recommended"
     ],
     "kubernetes": {
-        "managerFilePatterns": [
-            "/\\.yaml$/",
-            "/\\.yml$/"
-        ]
+        "fileMatch": ["\\.yaml$", "\\.yml$"]
     },
     "flux": {
-        "managerFilePatterns": [
-            "/\\.yaml$/",
-            "/\\.yml$/"
-        ]
+        "fileMatch": ["\\.yaml$", "\\.yml$"]
     },
     "helm-values": {
-        "managerFilePatterns": [
-            "/values\\.yaml$/",
-            "/values\\.yml$/"
-        ]
+        "fileMatch": ["values\\.yaml$", "values\\.yml$"]
     },
     "kustomize": {
-        "managerFilePatterns": [
-            "/kustomization\\.yaml$/",
-            "/kustomization\\.yml$/"
-        ]
+        "fileMatch": ["kustomization\\.yaml$", "kustomization\\.yml$"]
     }
 }
