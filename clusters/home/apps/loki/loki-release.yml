@@ -25,7 +25,7 @@ spec:
       replicas: 1
       persistence:
         enabled: true
-        size: 4Gi
+        size: 8Gi
         storageClass: longhorn
     loki:
       auth_enabled: false
