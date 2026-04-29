@@ -13,3 +13,4 @@ resources:
 - descheduler/
 - github-arc/
 - dev-container/
+- magic8ball/
