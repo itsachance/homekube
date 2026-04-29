@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: magic
-        image: localhost/magic8ball:0.1
+        image: ghcr.io/itsachance/magic8ball-api:latest
         ports:
         - containerPort: 8080
           name: http
@@ -28,4 +28,4 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "200m"
-        imagePullPolicy: Never
+        imagePullPolicy: Always
