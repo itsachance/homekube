@@ -68,6 +68,8 @@ spec:
               key: admin-password
         - name: POLLING_FREQUENCY
           value: "20"
+        - name: POLLING_PARSING_ERROR_LIMIT
+          value: "24"
         - name: FETCH_YOUTUBE_WATCH_TIME
           value: "1"
         - name: DISABLE_HTTP2
