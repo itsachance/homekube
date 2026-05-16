@@ -13,6 +13,21 @@ spec:
             labels:
               instance: "boromir"
               os: "almalinux"
+          - targets:
+              - "192.168.200.21:9100"
+            labels:
+              instance: "k3sMaster01"
+              os: "almalinux"
+          - targets:
+              - "192.168.200.20:9100"
+            labels:
+              instance: "k3sMaster02"
+              os: "almalinux"
+          - targets:
+              - "192.168.200.22:9100"
+            labels:
+              instance: "k3sWorker02"
+              os: "almalinux"
       - job_name: pfsense
         static_configs:
           - targets:
