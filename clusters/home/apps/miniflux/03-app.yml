@@ -35,7 +35,7 @@ spec:
               key: password
       containers:
       - name: miniflux
-        image: miniflux/miniflux:2.2.19
+        image: miniflux/miniflux:2.3.0
         ports:
         - containerPort: 8080
           name: http
