@@ -4,3 +4,4 @@ resources:
   - cert-manager-release.yml
   - cert-manager-repo.yml
   - cluster-issuer.yml
+  - cert-manager-secrets.yml
