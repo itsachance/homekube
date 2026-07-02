@@ -1,0 +1,22 @@
+apiVersion: kubevirt.io/v1
+kind: KubeVirt
+metadata:
+  name: kubevirt
+  namespace: kubevirt
+spec:
+  template:
+    spec:
+      nodeSelector:
+        hardware: usb-skyconnect
+  certificateRotateStrategy: {}
+  configuration:
+    developerConfiguration:
+      featureGates:
+        - HostDevices
+    permittedHostDevices:
+      usbHostDevices:
+        - resourceName: "kubevirt.io/zigbee"
+          selectors:
+            - vendor: "10c4"
+              product: "ea60"
+  imagePullPolicy: IfNotPresent
