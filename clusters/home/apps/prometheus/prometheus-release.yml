@@ -37,7 +37,23 @@ spec:
             labels:
               instance: "truenas"
               os: "debian"
+    scrapeConfigs:
+      kubernetes-api-servers:
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: '(apiserver_request_duration_seconds|etcd_request_duration_seconds|apiserver_request_sli_duration_seconds|apiserver_request_body_size_bytes|apiserver_watch_cache_read_wait_seconds|apiserver_watch_list_duration_seconds|apiserver_response_sizes|apiserver_watch_events_sizes|workqueue_queue_duration_seconds|workqueue_work_duration_seconds)_bucket'
+            action: drop
+      kubernetes-nodes:
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: '(apiserver_|etcd_|workqueue_|aggregator_|authentication_|disabled_metric_|registered_metric_).*'
+            action: drop
     server:
+      resources:
+        limits:
+          memory: 4Gi
+        requests:
+          memory: 2Gi
       persistentVolume:
         annotations:
           helm.sh/resource-policy: keep
