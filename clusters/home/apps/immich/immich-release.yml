@@ -41,7 +41,7 @@ spec:
         library:
           existingClaim: immich-photos-pvc
     machine-learning:
-      enabled: false
+      enabled: true
     valkey:
       enabled: true
       persistence:
