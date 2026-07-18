@@ -66,7 +66,7 @@ spec:
   chart:
     spec:
       chart: prometheus
-      version: '29.17.0'
+      version: '29.18.0'
       sourceRef:
         kind: HelmRepository
         name: prometheus-repo
