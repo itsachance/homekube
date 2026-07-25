@@ -34,7 +34,7 @@ spec:
               key: password
       containers:
       - name: trean
-        image: ghcr.io/itsachance/3an:v1.2.2
+        image: ghcr.io/itsachance/3an:v2.0.4
         ports:
         - containerPort: 5500
           name: http
